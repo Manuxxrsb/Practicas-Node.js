@@ -1,12 +1,33 @@
 const fs = require('node:fs')
 
-const text = fs.readFileSync('saludo.txt', 'utf8') //lee el archivo de forma sincrona y lo codifica en utf8 para que se pueda leer
+//lee el archivo de forma asincrona y lo codifica en utf8 para que se pueda leer
+console.log('Leyendo el primer archivo')
+fs.readFile('saludo.txt', 'utf8', (err, text) => { 
+    //=> es una funcion de flecha o callback que se ejecuta cuando se termina de leer el archivo
 
-console.log(text) //imprime el contenido del archivo
+    if (err) {
+        console.log('Error al leer el Primer archivo') //imprime el mensaje
+        return
+    }
+    console.log('El Primer archivo se ha leido') //imprime el mensaje
+    console.log(text) //imprime el contenido del archivo
+}
+)
 
+console.log('Haciendo cosas mientras se lee el archivo')
 
+console.log('Leyendo el segundo archivo') 
 
+//lee el archivo de forma asincrona y lo codifica en utf8 para que se pueda leer
+fs.readFile('nombres.txt', 'utf8', (err, text) => { 
+    //=> es una funcion de flecha o callback que se ejecuta cuando se termina de leer el archivo
 
-const text2 = fs.readFileSync('nombres.txt', 'utf8') //lee el archivo de forma sincrona y lo codifica en utf8 para que se pueda leer
+    if (err) {
+        console.log('Error al leer el Segundo archivo') //imprime el mensaje
+        return
+    }
+    console.log('El Segundo archivo se ha leido') //imprime el mensaje
+    console.log(text) //imprime el contenido del archivo
+}
+)
 
-console.log(text) //imprime el contenido del archivo
